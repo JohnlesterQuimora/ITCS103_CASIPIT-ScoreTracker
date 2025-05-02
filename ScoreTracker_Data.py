@@ -6,5 +6,5 @@ ws.title = "Score-Tracker-Data"
 
 ws.append(["Name", "Grade", "Remarks"])
 
-wb.save("userdata.xlsx")
+wb.save("student_scores.xlsx")
 print("Excel file created successfully.")

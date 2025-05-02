@@ -22,17 +22,13 @@ def validate_inputs():
         messagebox.showerror("Input Error", "Grade must be a valid number.")
         return False
 
-    if grade >= 75:
-        print("Passed")
-    elif grade <= 74:
-        print("Failed")
-    else:
-        print("Invalid Grade") 
 
     return True
 
 def grade_letter(grade):
-    if grade >= 95:
+    if grade > 100:
+        return "Invalid"
+    elif grade >= 95:
         return "Passed"
     elif grade >= 90:
         return "Passed"
@@ -54,10 +50,10 @@ def save_to_excel():
     name = name_entry.get()
     grade = int(grade_entry.get())
 
-    wb = load_workbook("userdata.xlsx")
+    wb = load_workbook("student_scores.xlsx")
     ws = wb["Score-Tracker-Data"]
     ws.append([name, grade, grade_letter(grade)])
-    wb.save("userdata.xlsx")
+    wb.save("student_scores.xlsx")
 
     format_excel()
     messagebox.showinfo("Success", "Data saved successfully!")
@@ -69,7 +65,7 @@ def save_to_excel():
 
     # ========== Format Excel Sheet ==========
 def format_excel():
-    wb = load_workbook("userdata.xlsx")
+    wb = load_workbook("student_scores.xlsx")
     ws = wb["Score-Tracker-Data"]
 
     # Bold header
@@ -86,7 +82,7 @@ def format_excel():
 
     # ========== View Excel Data ==========
 def show_data():
-    wb = load_workbook("userdata.xlsx")
+    wb = load_workbook("student_scores.xlsx")
     ws = wb["Score-Tracker-Data"]
 
     data_window = tk.Toplevel(window)
@@ -98,7 +94,7 @@ def show_data():
             label.grid(row=i, column=j)
 
 
-#====================UI=========
+#====================GUI=========
 window = tk.Tk()
 window.title("Score Tracker")
 
