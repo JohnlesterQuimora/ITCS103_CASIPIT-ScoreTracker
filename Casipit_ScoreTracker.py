@@ -78,7 +78,7 @@ def format_excel():
         col_letter = get_column_letter(col[0].column)
         ws.column_dimensions[col_letter].width = max_length + 2
 
-    wb.save("userdata.xlsx")
+    wb.save("student_scores.xlsx")
 
     # ========== View Excel Data ==========
 def show_data():
